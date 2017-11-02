@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import trails.Trails;
 
 /**
  * DESCRIPTION
@@ -25,20 +26,17 @@ import javafx.stage.Stage;
  * @author Nicholas Perez
  * @version 1.0
  **/
-public class HikeLogUI extends Application
+public class HikeLogUI
 {
-
+    private Stage stage;
     public static final int MAX_WIDTH = 300;
 
-    @Override
-    public void start(Stage stage) throws Exception
+    public HikeLogUI(Stage stage)
     {
-        stage.setTitle("Hiking Log");
-        stage.setScene(assemble());
-        stage.show();
+        this.stage = stage;
     }
 
-    private Scene assemble()
+    public Scene assemble()
     {
         GridPane gridPane = new GridPane();
 
@@ -61,6 +59,8 @@ public class HikeLogUI extends Application
         Button trails = new Button("Trails");
         Button checklist = new Button("Checklist");
         Button reminders = new Button("Reminders");
+
+        trails.setOnAction(event -> stage.setScene(TrailsUI.trails()));
 
         trails.setMaxWidth(MAX_WIDTH);
         checklist.setMaxWidth(MAX_WIDTH);
