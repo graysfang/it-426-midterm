@@ -1,0 +1,24 @@
+.root{
+    -fx-accent: #0093ff;
+    -fx-focus-color: #0093ff;
+}
+
+GridPane{
+    -fx-background-color: #282521;
+    -fx-hgap: 50px;
+    -fx-font-family: "Agency FB";
+
+}
+
+.wideButtons Button{
+    -fx-border: none;
+    -fx-background-color: #39B54A;
+    -fx-text-fill: #F2F2F2;
+    -fx-font-size: 2em;
+}
+
+
+
+.wideButtons Button:hover{
+    -fx-background-color: #196A31;
+}
