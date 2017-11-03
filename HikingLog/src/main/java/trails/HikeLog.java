@@ -1,5 +1,6 @@
-package trails;/*
- * Nicholas Perez
+package trails;
+/*
+ * Nicholas Perez, Hillary Wagoner, Bo Zhang
  * 11/1/2017
  * HikeLog.java
  *
@@ -9,7 +10,7 @@ package trails;/*
 /**
  * DESCRIPTION
  *
- * @author Nicholas Perez
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
 public class HikeLog {

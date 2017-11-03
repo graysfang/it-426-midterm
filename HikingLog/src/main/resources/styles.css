@@ -1,6 +1,7 @@
-BorderPane{
+BorderPane, GridPane{
     -fx-background-color: #282521;
     -fx-font-family: "Agency FB";
+
 }
 
 .wideButtons Button{
@@ -12,4 +13,9 @@ BorderPane{
 
 .wideButtons Button:hover{
     -fx-background-color: #196A31;
+}
+
+.checklist CheckBox{
+    -fx-text-fill: #F2F2F2;
+    -fx-font-size: 2em;
 }
