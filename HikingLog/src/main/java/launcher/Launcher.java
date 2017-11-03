@@ -1,6 +1,6 @@
 package launcher;
 /*
- * Nicholas Perez
+ * Nicholas Perez, Hillary Wagoner, Bo Zhang
  * 10/30/2017
  * Launcher.java
  *
@@ -14,7 +14,7 @@ import ui.HikeLogUI;
 /**
  * DESCRIPTION
  *
- * @author Nicholas Perez
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
 public class Launcher extends Application
