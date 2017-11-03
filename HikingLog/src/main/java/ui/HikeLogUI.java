@@ -8,6 +8,8 @@ package ui;
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +21,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import trails.Trails;
 
 /**
  * DESCRIPTION
@@ -26,20 +29,11 @@ import javafx.stage.Stage;
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
-public class HikeLogUI extends Application
+public class HikeLogUI
 {
-
     public static final int MAX_WIDTH = 300;
 
-    @Override
-    public void start(Stage stage) throws Exception
-    {
-        stage.setTitle("Hiking Log");
-        stage.setScene(checklist());
-        stage.show();
-    }
-
-    private Scene assemble()
+    public static Scene assemble(Stage stage)
     {
         BorderPane basePane = new BorderPane();
         GridPane gridPane = generateGridPane();
@@ -47,8 +41,6 @@ public class HikeLogUI extends Application
 
         vBox.setSpacing(35);
         vBox.getStyleClass().add("wideButtons");
-
-
 
         gridPane.add(vBox, 0, 3, 3, 1);
 
@@ -70,6 +62,24 @@ public class HikeLogUI extends Application
         basePane.setBottom(logoView);
         basePane.setPadding(new Insets(15, 25, 15, 25));
         basePane.getStylesheets().add("styles.css");
+
+        for(int i =0; i < menuButtons.length; i++)
+        {
+            Button button = menuButtons[i];
+            String label = button.getText();
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event)
+                {
+                    if (label.equals("Trails"))
+                    {
+                        stage.setScene(TrailsUI.trails(stage));
+                    }
+                }
+            });
+        }
+
         return new Scene(basePane, 350, 650);
     }
 
@@ -98,7 +108,7 @@ public class HikeLogUI extends Application
     }
     private Scene reminders(){return null;}
 
-    private GridPane generateGridPane()
+    private static GridPane generateGridPane()
     {
         GridPane gridPane = new GridPane();
 

@@ -8,6 +8,7 @@ package launcher;
  */
 
 import javafx.application.Application;
+import javafx.stage.Stage;
 import ui.HikeLogUI;
 
 /**
@@ -16,10 +17,18 @@ import ui.HikeLogUI;
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
-public class Launcher
+public class Launcher extends Application
 {
+    public void start(Stage stage) throws Exception
+    {
+        stage.setTitle("Hiking Log");
+        stage.setScene(HikeLogUI.assemble(stage));
+        stage.show();
+    }
+
     public static void main(String[] args)
     {
-        Application.launch(HikeLogUI.class, args);
+        Application.launch(args);
+
     }
 }
