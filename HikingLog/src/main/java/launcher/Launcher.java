@@ -21,10 +21,8 @@ public class Launcher extends Application
 {
     public void start(Stage stage) throws Exception
     {
-        HikeLogUI hikeLogUI = new HikeLogUI(stage);
-
         stage.setTitle("Hiking Log");
-        stage.setScene(hikeLogUI.assemble());
+        stage.setScene(HikeLogUI.assemble(stage));
         stage.show();
     }
 

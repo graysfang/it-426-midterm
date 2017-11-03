@@ -2,7 +2,8 @@ package ui;/**
  * Created by Hillary on 11/2/2017.
  */
 
-import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 
 public class TrailsUI {
 
-    public static Scene trails() {
+    public static Scene trails(Stage stage) {
 
         GridPane gridPane = new GridPane();
 
@@ -27,11 +28,21 @@ public class TrailsUI {
         Button addTrail = new Button("Add Trail");
         Button removeTrail = new Button("Remove Trail");
 
+        //temporary
+        Button home = new Button("Home");
+
         HBox addRemoveButtons = new HBox();
-        addRemoveButtons.getChildren().addAll(addTrail, removeTrail);
+        addRemoveButtons.getChildren().addAll(addTrail, removeTrail, home);
 
         gridPane.add(addRemoveButtons, 0, 3, 3, 1);
 
+        home.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                stage.setScene(HikeLogUI.assemble(stage));
+            }
+        });
 
         return new Scene(gridPane, 350, 650);
     }

@@ -8,6 +8,8 @@ package ui;
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,15 +31,9 @@ import trails.Trails;
  **/
 public class HikeLogUI
 {
-    private Stage stage;
     public static final int MAX_WIDTH = 300;
 
-    public HikeLogUI(Stage stage)
-    {
-        this.stage = stage;
-    }
-
-    public Scene assemble()
+    public static Scene assemble(Stage stage)
     {
         BorderPane basePane = new BorderPane();
         GridPane gridPane = generateGridPane();
@@ -45,8 +41,6 @@ public class HikeLogUI
 
         vBox.setSpacing(35);
         vBox.getStyleClass().add("wideButtons");
-
-
 
         gridPane.add(vBox, 0, 3, 3, 1);
 
@@ -68,6 +62,24 @@ public class HikeLogUI
         basePane.setBottom(logoView);
         basePane.setPadding(new Insets(15, 25, 15, 25));
         basePane.getStylesheets().add("styles.css");
+
+        for(int i =0; i < menuButtons.length; i++)
+        {
+            Button button = menuButtons[i];
+            String label = button.getText();
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event)
+                {
+                    if (label.equals("Trails"))
+                    {
+                        stage.setScene(TrailsUI.trails(stage));
+                    }
+                }
+            });
+        }
+
         return new Scene(basePane, 350, 650);
     }
 
@@ -96,7 +108,7 @@ public class HikeLogUI
     }
     private Scene reminders(){return null;}
 
-    private GridPane generateGridPane()
+    private static GridPane generateGridPane()
     {
         GridPane gridPane = new GridPane();
 
