@@ -13,9 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,47 +40,39 @@ public class HikeLogUI extends Application
 
     private Scene assemble()
     {
+        BorderPane basePane = new BorderPane();
         GridPane gridPane = new GridPane();
+        VBox vBox = new VBox();
 
-        gridPane.setPadding(new Insets(15, 25, 15, 25));
+        vBox.setSpacing(35);
+        vBox.getStyleClass().add("wideButtons");
 
         gridPane.getColumnConstraints().addAll(
                 new ColumnConstraints(100),
                 new ColumnConstraints(100),
                 new ColumnConstraints(100));
 
-        //create and add three rows: trails, checklist, reminders, logo
+        gridPane.add(vBox, 0, 3, 3, 1);
 
-        //for button creation/adding later
-        for(int i = 0; i<4; i++)
+        String[] buttonLabels = {"Trails", "Checklist", "Reminders"};
+        Button[] menuButtons = new Button[buttonLabels.length];
+
+        for(int i = 0; i<3; i++)
         {
-
+            menuButtons[i] = new Button(buttonLabels[i]);
+            menuButtons[i].setMaxWidth(MAX_WIDTH);
+            vBox.getChildren().add(menuButtons[i]);
         }
 
-        //HBox row = new HBox();
-        Button trails = new Button("Trails");
-        Button checklist = new Button("Checklist");
-        Button reminders = new Button("Reminders");
-
-        trails.setMaxWidth(MAX_WIDTH);
-        checklist.setMaxWidth(MAX_WIDTH);
-        reminders.setMaxWidth(MAX_WIDTH);
-
         Image logo = new Image("trails_logo.png");
-
         ImageView logoView = new ImageView();
         logoView.setImage(logo);
 
-        VBox vBox = new VBox();
-        vBox.setSpacing(15);
-        vBox.getChildren().addAll(trails, checklist, reminders, logoView);
-        vBox.getStyleClass().add("wideButtons");
-
-        gridPane.getStylesheets().add("styles.css");
-        gridPane.add(vBox, 0, 3, 3, 1);
-
-
-        return new Scene(gridPane, 350, 650);
+        basePane.setTop(gridPane);
+        basePane.setBottom(logoView);
+        basePane.setPadding(new Insets(15, 25, 15, 25));
+        basePane.getStylesheets().add("styles.css");
+        return new Scene(basePane, 350, 650);
     }
 
     private Scene home(){return null;}
