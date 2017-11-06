@@ -27,16 +27,7 @@ public class TrailsUI {
 
     public static Scene trails(Stage stage)
     {
-
-        GridPane gridPane = new GridPane();
-        gridPane.getStylesheets().add("styles.css");
-
-        gridPane.setPadding(new Insets(15, 25, 15, 25));
-
-        gridPane.getColumnConstraints().addAll(
-                new ColumnConstraints(100),
-                new ColumnConstraints(100),
-                new ColumnConstraints(100));
+        GridPane gridPane = TempleteUI.generateGridPane();
 
         HBox addTrailBox = new HBox();
         Label addTrailLabel = new Label("Add Trail: ");
