@@ -19,3 +19,7 @@ BorderPane, GridPane{
     -fx-text-fill: #F2F2F2;
     -fx-font-size: 2em;
 }
+
+.list-cell:empty {
+    visibility: hidden;
+}
