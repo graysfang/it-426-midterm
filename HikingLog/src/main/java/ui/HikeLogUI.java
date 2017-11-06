@@ -1,4 +1,5 @@
 package ui;
+
 /*
  * Nicholas Perez, Hillary Wagoner, Bo Zhang
  * 10/30/2017
@@ -9,30 +10,31 @@ package ui;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import models.TrailsModel;
 
 /**
  * DESCRIPTION
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
+ *
  **/
+
 public class HikeLogUI
 {
     private static final int MAX_WIDTH = 300;
 
     public static Scene assemble(Stage stage)
     {
+
         BorderPane basePane = new BorderPane();
         GridPane gridPane = TempleteUI.generateGridPane();
         VBox vBox = new VBox();
@@ -58,7 +60,6 @@ public class HikeLogUI
 
         basePane.setTop(gridPane);
         basePane.setBottom(logoView);
-
         basePane.getStylesheets().add("styles.css");
 
         for (Button button : menuButtons)
@@ -79,28 +80,4 @@ public class HikeLogUI
 
         return new Scene(basePane, 350, 650);
     }
-
-    private Scene home(){return null;}
-    private Scene trails(){return null;}
-    private Scene aTrail(){return null;}
-    private Scene checklist()
-    {
-        GridPane gridPane = TempleteUI.generateGridPane();
-        VBox checklistBox = new VBox();
-
-        String[] checklistItems = {"Backpack","Water Bottle","Compass","First Aid Kit","Map","Camping Kit"};
-
-        CheckBox testCheckbox = new CheckBox(checklistItems[0]);
-
-
-        checklistBox.getStyleClass().add("checklist");
-        checklistBox.getChildren().add(testCheckbox);
-        gridPane.add(checklistBox, 0,0);
-
-
-        return new Scene(gridPane, 350, 650);
-    }
-    private Scene reminders(){return null;}
-
-
 }

@@ -6,11 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -22,19 +20,24 @@ public class TrailsUI {
     final private static int ROW_HEIGHT = 24;
     private static TrailsModel trailsModel = new TrailsModel();
     private static TrailModel trailModel = new TrailModel();
-    final private static ObservableList trailNames = FXCollections.observableArrayList();
-    static ListView trails;
+    private static ObservableList trailNames = FXCollections.observableArrayList();
 
     public static Scene trails(Stage stage)
     {
         GridPane gridPane = TempleteUI.generateGridPane();
+
+        populateTrailNames();
+
+        ListView trails = new ListView(trailNames);
+        listPrefHeight(trails);
+        trails.setMaxWidth(250);
+        HBox addRemoveButtons = new HBox();
 
         HBox addTrailBox = new HBox();
         Label addTrailLabel = new Label("Add Trail: ");
         TextField addTrailField = new TextField();
         Button addTrail = new Button("Add Trail");
         addTrailBox.getChildren().addAll(addTrailLabel, addTrailField, addTrail);
-
 
         Button removeTrail = new Button("Remove Trail");
 
@@ -48,9 +51,11 @@ public class TrailsUI {
             }
         });
 
-        trails = new ListView();
-        trails.setPrefHeight(trailsModel.getTrails().size() * ROW_HEIGHT + 2);
-        refreshList();
+        addRemoveButtons.getChildren().addAll(addTrail, removeTrail, home);
+
+        gridPane.add(addTrailBox, 0, 1);
+        gridPane.add(addRemoveButtons, 0, 3, 3, 1);
+        gridPane.add(trails, 0, 5, 3, 1);
 
         trails.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -72,31 +77,32 @@ public class TrailsUI {
             {
                 trailsModel.addTrail(addTrailField.getText());
                 addTrailField.clear();
-                refreshList();
-
+                populateTrailNames();
+                listPrefHeight(trails);
             }
         });
 
-        HBox addRemoveButtons = new HBox();
-        addRemoveButtons.getChildren().addAll(addTrail, removeTrail, home);
-
-        gridPane.add(addTrailBox, 0, 1);
-        gridPane.add(addRemoveButtons, 0, 3, 3, 1);
-        gridPane.add(trails, 0, 5);
+        removeTrail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                trailsModel.removeTrail((String) trails.getSelectionModel().getSelectedItem());
+                populateTrailNames();
+                listPrefHeight(trails);
+            }
+        });
 
         return new Scene(gridPane, 350, 650);
     }
 
-    private static void refreshList()
+    private static void listPrefHeight(ListView list)
     {
-        trailNames.clear();
-        trailNames.addAll(FXCollections.observableArrayList(trailsModel.getTrails()));
-        trails.setItems(trailNames);
+        list.setPrefHeight(trailNames.size() * ROW_HEIGHT + 2);
     }
 
-    private HBox section(String name)
+    private static void populateTrailNames()
     {
-
-        return null;
+        trailNames.clear();
+        trailNames.addAll(trailsModel.getTrails());
     }
 }
