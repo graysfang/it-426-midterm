@@ -79,12 +79,9 @@ public class HikeLogUI extends Application
     private Scene checklist()
     {
         GridPane gridPane = generateGridPane();
+        VBox checklistBox = new VBox();
 
         String[] checklistItems = {"Backpack","Water Bottle","Compass","First Aid Kit","Map","Camping Kit"};
-
-
-
-        VBox checklistBox = new VBox();
 
         CheckBox testCheckbox = new CheckBox(checklistItems[0]);
 
