@@ -34,7 +34,7 @@ public class HikeLogUI
     public static Scene assemble(Stage stage)
     {
         BorderPane basePane = new BorderPane();
-        GridPane gridPane = generateGridPane();
+        GridPane gridPane = TempleteUI.generateGridPane();
         VBox vBox = new VBox();
 
         vBox.setSpacing(35);
@@ -58,7 +58,7 @@ public class HikeLogUI
 
         basePane.setTop(gridPane);
         basePane.setBottom(logoView);
-        basePane.setPadding(new Insets(15, 25, 15, 25));
+
         basePane.getStylesheets().add("styles.css");
 
         for (Button button : menuButtons)
@@ -85,7 +85,7 @@ public class HikeLogUI
     private Scene aTrail(){return null;}
     private Scene checklist()
     {
-        GridPane gridPane = generateGridPane();
+        GridPane gridPane = TempleteUI.generateGridPane();
         VBox checklistBox = new VBox();
 
         String[] checklistItems = {"Backpack","Water Bottle","Compass","First Aid Kit","Map","Camping Kit"};
@@ -102,17 +102,5 @@ public class HikeLogUI
     }
     private Scene reminders(){return null;}
 
-    private static GridPane generateGridPane()
-    {
-        GridPane gridPane = new GridPane();
 
-        gridPane.getColumnConstraints().addAll(
-                new ColumnConstraints(100),
-                new ColumnConstraints(100),
-                new ColumnConstraints(100));
-
-        gridPane.getStylesheets().add("styles.css");
-
-        return gridPane;
-    }
 }
