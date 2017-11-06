@@ -7,7 +7,6 @@ package ui;
  * DESCRIPTION
  */
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,7 +20,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import trails.Trails;
 
 /**
  * DESCRIPTION
@@ -31,7 +29,7 @@ import trails.Trails;
  **/
 public class HikeLogUI
 {
-    public static final int MAX_WIDTH = 300;
+    private static final int MAX_WIDTH = 300;
 
     public static Scene assemble(Stage stage)
     {
@@ -63,9 +61,8 @@ public class HikeLogUI
         basePane.setPadding(new Insets(15, 25, 15, 25));
         basePane.getStylesheets().add("styles.css");
 
-        for(int i =0; i < menuButtons.length; i++)
+        for (Button button : menuButtons)
         {
-            Button button = menuButtons[i];
             String label = button.getText();
 
             button.setOnAction(new EventHandler<ActionEvent>() {
