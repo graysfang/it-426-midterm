@@ -49,7 +49,7 @@ public class TrailUI {
         });
 
         healthDetailFields.getChildren().addAll(trailTitle, stepCount, stepCountField);
-        gridPane.getChildren().addAll(healthDetailFields);
+        gridPane.getChildren().addAll(healthDetailFields, submitStepsAndHeartRate);
 
         return new Scene(gridPane, 350, 650);
     }

@@ -3,7 +3,7 @@ package ui;
 /*
  * Nicholas Perez, Hillary Wagoner, Bo Zhang
  * 10/30/2017
- * HikeLogUI.java
+ * HomeUI.java
  *
  * DESCRIPTION
  */
@@ -28,7 +28,7 @@ import models.TrailsModel;
  *
  **/
 
-public class HikeLogUI
+public class HomeUI
 {
     private static final int MAX_WIDTH = 300;
 

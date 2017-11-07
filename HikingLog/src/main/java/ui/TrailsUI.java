@@ -43,17 +43,7 @@ public class TrailsUI {
 
         Button removeTrail = new Button("Remove Trail");
 
-        //temporary
-        Button home = new Button("Home");
-        home.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                stage.setScene(HikeLogUI.assemble(stage));
-            }
-        });
-
-        addRemoveButtons.getChildren().addAll(addTrail, removeTrail, home);
+        addRemoveButtons.getChildren().addAll(addTrail, removeTrail, TempleteUI.homeBar(stage));
 
         gridPane.add(addTrailBox, 0, 1);
         gridPane.add(addRemoveButtons, 0, 3, 3, 1);

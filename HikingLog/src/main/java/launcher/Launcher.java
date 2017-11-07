@@ -9,7 +9,7 @@ package launcher;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import ui.HikeLogUI;
+import ui.HomeUI;
 
 /**
  * DESCRIPTION
@@ -22,7 +22,7 @@ public class Launcher extends Application
     public void start(Stage stage) throws Exception
     {
         stage.setTitle("Hiking Log");
-        stage.setScene(HikeLogUI.assemble(stage));
+        stage.setScene(HomeUI.assemble(stage));
         stage.show();
     }
 

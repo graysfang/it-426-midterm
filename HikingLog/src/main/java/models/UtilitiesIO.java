@@ -70,4 +70,24 @@ public class UtilitiesIO
             writer.close();
         }
     }
+
+    public static void writeOutAppend(String filename, String data)
+    {
+        PrintWriter writer = null;
+
+        try
+        {
+            writer = new PrintWriter(new FileOutputStream("src/main/resources/"+filename, true));
+
+            writer.println(data);
+        }
+        catch(FileNotFoundException ex)
+        {
+            System.out.println("Error reading/writing from file: "+ ex.getMessage());
+        }
+        finally
+        {
+            writer.close();
+        }
+    }
 }
