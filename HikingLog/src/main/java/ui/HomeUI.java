@@ -82,6 +82,6 @@ public class HomeUI
             });
         }
 
-        return new Scene(basePane, 350, 650);
+        return new Scene(basePane, 350, 500);
     }
 }

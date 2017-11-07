@@ -24,6 +24,7 @@ public class TrailUI {
     {
         GridPane gridPane = TempleteUI.generateGridPane();
 
+
         Button submitStepsAndHeartRate = new Button("Submit");
         submitStepsAndHeartRate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
