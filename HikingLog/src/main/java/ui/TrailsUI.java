@@ -18,6 +18,7 @@ import models.TrailsModel;
 public class TrailsUI {
 
     final private static int ROW_HEIGHT = 24;
+    private static final int LIST_ROW_PADDING = 2;
     private static TrailsModel trailsModel = new TrailsModel();
     private static TrailModel trailModel = new TrailModel();
     private static ObservableList trailNames = FXCollections.observableArrayList();
@@ -83,7 +84,7 @@ public class TrailsUI {
 
     private static void listPrefHeight(ListView list)
     {
-        list.setPrefHeight(trailNames.size() * ROW_HEIGHT + 2);
+        list.setPrefHeight(trailNames.size() * ROW_HEIGHT + LIST_ROW_PADDING);
     }
 
     private static void populateTrailNames()
