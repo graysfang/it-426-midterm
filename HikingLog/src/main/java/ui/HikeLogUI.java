@@ -74,6 +74,10 @@ public class HikeLogUI
                     {
                         stage.setScene(TrailsUI.trails(stage));
                     }
+                    else if(label.equals("Checklist"))
+                    {
+                        stage.setScene((ChecklistUI.checklist(stage)));
+                    }
                 }
             });
         }

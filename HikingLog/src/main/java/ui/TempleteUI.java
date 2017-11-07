@@ -1,5 +1,5 @@
 package ui;/*
- * Nicholas Perez
+ * Nicholas Perez, Hillary Wagoner, Bo Zhang
  * 11/6/2017
  * TempleteUI.java
  *
@@ -7,13 +7,14 @@ package ui;/*
  */
 
 import javafx.geometry.Insets;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
 /**
  * DESCRIPTION
  *
- * @author Nicholas Perez
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
 public class TempleteUI
@@ -32,5 +33,6 @@ public class TempleteUI
 
         return gridPane;
     }
+
 
 }
