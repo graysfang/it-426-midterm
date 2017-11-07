@@ -48,18 +48,15 @@ public class UtilitiesIO
         }
     }
 
-    public static void writeOut(String filename, ArrayList<String> data)
+    public static void writeOut(String filename, String data)
     {
         PrintWriter writer = null;
 
         try
         {
-            writer = new PrintWriter(new FileOutputStream("src/main/resources/"+filename, false));
+            writer = new PrintWriter(new FileOutputStream("src/main/resources/"+filename, true));
 
-            for (String line : data)
-            {
-                writer.println(line);
-            }
+                writer.println(data);
         }
         catch(FileNotFoundException ex)
         {

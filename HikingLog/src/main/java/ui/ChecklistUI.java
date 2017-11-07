@@ -26,10 +26,8 @@ import java.util.ArrayList;
  * @author Nicholas Perez
  * @version 1.0
  **/
-public class ChecklistUI
-{
+public class ChecklistUI {
     private static ChecklistModel checklistModel = new ChecklistModel();
-
 
     public static Scene checklist(Stage stage)
     {
@@ -43,7 +41,7 @@ public class ChecklistUI
         Button removeItem = new Button("Remove");
 
 
-        for (String item: checklist)
+        for (String item : checklist)
         {
             checklistVBox.getChildren().add(new CheckBox(item));
         }
@@ -69,7 +67,7 @@ public class ChecklistUI
         borderPane.setCenter(checklistVBox);
         borderPane.setTop(topButtonBar);
 
-        gridPane.add(borderPane, 0, 0, 4,1);
+        gridPane.add(borderPane, 0, 0, 4, 1);
 
         return new Scene(gridPane, 350, 650);
     }

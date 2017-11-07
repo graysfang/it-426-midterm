@@ -17,24 +17,23 @@ import java.util.ArrayList;
  **/
 public class TrailsModel {
 
-    private ArrayList<String> trails = new ArrayList<>();
-
     public void addTrail(String trailName)
     {
         if (!trailName.equals(""))
         {
-            trails.add(trailName);
+            UtilitiesIO.writeOut("trails.txt", trailName);
         }
     }
 
     public ArrayList<String> getTrails()
     {
+        ArrayList<String> trails = UtilitiesIO.readIn("trails.txt");
         return trails;
     }
 
     public void removeTrail(String trailName)
     {
-        trails.remove(trailName);
+        //trails.remove(trailName);
     }
 
 

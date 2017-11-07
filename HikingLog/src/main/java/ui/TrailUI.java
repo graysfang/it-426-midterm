@@ -22,15 +22,7 @@ public class TrailUI {
 
     public static Scene trail(Stage stage, TrailModel trailModel)
     {
-        GridPane gridPane = new GridPane();
-
-        gridPane.setPadding(new Insets(15, 25, 15, 25));
-
-        gridPane.getColumnConstraints().addAll(
-                new ColumnConstraints(100),
-                new ColumnConstraints(100),
-                new ColumnConstraints(100));
-
+        GridPane gridPane = TempleteUI.generateGridPane();
 
         Button submitStepsAndHeartRate = new Button("Submit");
         submitStepsAndHeartRate.setOnAction(new EventHandler<ActionEvent>() {
@@ -56,7 +48,7 @@ public class TrailUI {
         });
 
         healthDetailFields.getChildren().addAll(trailTitle, stepCount, stepCountField);
-        gridPane.getChildren().addAll(healthDetailFields);
+        gridPane.getChildren().addAll(healthDetailFields, submitStepsAndHeartRate);
 
         return new Scene(gridPane, 350, 650);
     }

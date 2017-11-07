@@ -6,12 +6,9 @@ package ui;/*
  * DESCRIPTION
  */
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -47,7 +44,7 @@ public class TempleteUI
 
         homeButton.setOnAction(event ->
         {
-            stage.setScene(HikeLogUI.assemble(stage));
+            stage.setScene(HomeUI.assemble(stage));
         });
 
         homeBox.getChildren().add(homeButton);
