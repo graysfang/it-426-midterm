@@ -17,6 +17,8 @@ import java.util.ArrayList;
  **/
 public class TrailsModel {
 
+    ArrayList<String> trails;
+
     public void addTrail(String trailName)
     {
         if (!trailName.equals(""))
@@ -27,13 +29,19 @@ public class TrailsModel {
 
     public ArrayList<String> getTrails()
     {
-        ArrayList<String> trails = UtilitiesIO.readIn("trails.txt");
+        readInTrails();
         return trails;
     }
 
     public void removeTrail(String trailName)
     {
         //trails.remove(trailName);
+    }
+
+    private ArrayList<String> readInTrails()
+    {
+       trails = UtilitiesIO.readIn("trails.txt");
+       return trails;
     }
 
 
