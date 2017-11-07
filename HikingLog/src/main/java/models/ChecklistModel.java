@@ -18,9 +18,14 @@ public class ChecklistModel
 {
     private ArrayList<String> checklist = UtilitiesIO.readIn("checklist.txt");
 
-    public ArrayList getChecklist()
+    private ArrayList getChecklist()
     {
         return checklist;
+    }
+
+    private void setChecklist()
+    {
+        
     }
 
 

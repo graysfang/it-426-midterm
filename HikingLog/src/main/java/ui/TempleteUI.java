@@ -6,10 +6,16 @@ package ui;/*
  * DESCRIPTION
  */
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * DESCRIPTION
@@ -34,5 +40,22 @@ public class TempleteUI
         return gridPane;
     }
 
+    public static VBox homeBar(Stage stage)
+    {
+        Button homeButton = new Button("Home");
+        VBox homeBox = new VBox();
+
+        homeButton.setOnAction(event ->
+        {
+            stage.setScene(HikeLogUI.assemble(stage));
+        });
+
+        homeBox.getChildren().add(homeButton);
+
+        homeBox.getStyleClass().add("smallButtons");
+
+        homeBox.setAlignment(Pos.CENTER);
+        return homeBox;
+    }
 
 }
