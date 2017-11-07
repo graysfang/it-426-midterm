@@ -21,7 +21,7 @@ public class TrailsModel {
     {
         if (!trailName.equals(""))
         {
-            UtilitiesIO.writeOut("trails.txt", trailName);
+            UtilitiesIO.writeOutAppend("trails.txt", trailName);
         }
     }
 
