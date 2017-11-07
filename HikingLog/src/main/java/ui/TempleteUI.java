@@ -3,7 +3,7 @@ package ui;/*
  * 11/6/2017
  * TempleteUI.java
  *
- * DESCRIPTION
+ * Basic template class to handle the creation of common view components
  */
 
 import javafx.event.ActionEvent;
@@ -18,13 +18,17 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * DESCRIPTION
+ * Basic template class to handle the creation of common view components
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
 public class TempleteUI
 {
+    /**
+     * Basic GridPane creation
+     * @return the gridpane
+     */
     public static GridPane generateGridPane()
     {
         GridPane gridPane = new GridPane();
@@ -40,6 +44,11 @@ public class TempleteUI
         return gridPane;
     }
 
+    /**
+     * Basic home bar creation
+     * @param stage the current stage
+     * @return a VBox with a home button.Returns the user to the home screen
+     */
     public static VBox homeBar(Stage stage)
     {
         Button homeButton = new Button("Home");

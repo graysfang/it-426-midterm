@@ -25,6 +25,7 @@ public class TrailsUI {
     public static Scene trails(Stage stage)
     {
         GridPane gridPane = TempleteUI.generateGridPane();
+        gridPane.getStyleClass().add("smallButtons");
 
         populateTrailNames();
 
@@ -32,8 +33,9 @@ public class TrailsUI {
         listPrefHeight(trails);
         trails.setMaxWidth(250);
         HBox addRemoveButtons = new HBox();
-
+        addRemoveButtons.setSpacing(5);
         HBox addTrailBox = new HBox();
+
         Label addTrailLabel = new Label("Add Trail: ");
         TextField addTrailField = new TextField();
         Button addTrail = new Button("Add Trail");
@@ -71,25 +73,19 @@ public class TrailsUI {
             }
         });
 
-        addTrail.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                trailsModel.addTrail(addTrailField.getText());
-                addTrailField.clear();
-                populateTrailNames();
-                listPrefHeight(trails);
-            }
+        addTrail.setOnAction(event ->
+        {
+            trailsModel.addTrail(addTrailField.getText());
+            addTrailField.clear();
+            populateTrailNames();
+            listPrefHeight(trails);
         });
 
-        removeTrail.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                trailsModel.removeTrail((String) trails.getSelectionModel().getSelectedItem());
-                populateTrailNames();
-                listPrefHeight(trails);
-            }
+        removeTrail.setOnAction(event ->
+        {
+            trailsModel.removeTrail((String) trails.getSelectionModel().getSelectedItem());
+            populateTrailNames();
+            listPrefHeight(trails);
         });
 
         return new Scene(gridPane, 350, 650);

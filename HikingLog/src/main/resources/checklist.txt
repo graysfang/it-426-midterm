@@ -4,3 +4,4 @@ Compass
 First Aid Kit
 Map
 Camping Kit
+Dog

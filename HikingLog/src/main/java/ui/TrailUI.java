@@ -22,14 +22,7 @@ public class TrailUI {
 
     public static Scene trail(Stage stage, TrailModel trailModel)
     {
-        GridPane gridPane = new GridPane();
-
-        gridPane.setPadding(new Insets(15, 25, 15, 25));
-
-        gridPane.getColumnConstraints().addAll(
-                new ColumnConstraints(100),
-                new ColumnConstraints(100),
-                new ColumnConstraints(100));
+        GridPane gridPane = TempleteUI.generateGridPane();
 
 
         Button submitStepsAndHeartRate = new Button("Submit");
