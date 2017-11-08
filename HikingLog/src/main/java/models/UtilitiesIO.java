@@ -6,10 +6,16 @@ package models;/*
  * DESCRIPTION
  */
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -21,8 +27,7 @@ import java.util.Scanner;
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
-public class UtilitiesIO
-{
+public class UtilitiesIO {
     public static ArrayList<String> readIn(String filename)
     {
         ArrayList<String> lines = new ArrayList<>();
@@ -30,16 +35,16 @@ public class UtilitiesIO
 
         try
         {
-            reader = new Scanner(new FileInputStream(("src/main/resources/"+filename)));
+            reader = new Scanner(new FileInputStream(("src/main/resources/" + filename)));
 
-            while(reader.hasNextLine())
+            while (reader.hasNextLine())
             {
                 lines.add(reader.nextLine());
             }
         }
-        catch(FileNotFoundException ex)
+        catch (FileNotFoundException ex)
         {
-            System.out.println("Error reading/writing from file: "+ ex.getMessage());
+            System.out.println("Error reading/writing from file: " + ex.getMessage());
         }
         finally
         {
@@ -54,16 +59,16 @@ public class UtilitiesIO
 
         try
         {
-            writer = new PrintWriter(new FileOutputStream("src/main/resources/"+filename, false));
+            writer = new PrintWriter(new FileOutputStream("src/main/resources/" + filename, false));
 
             for (String line : data)
             {
                 writer.println(line);
             }
         }
-        catch(FileNotFoundException ex)
+        catch (FileNotFoundException ex)
         {
-            System.out.println("Error reading/writing from file: "+ ex.getMessage());
+            System.out.println("Error reading/writing from file: " + ex.getMessage());
         }
         finally
         {
@@ -77,17 +82,18 @@ public class UtilitiesIO
 
         try
         {
-            writer = new PrintWriter(new FileOutputStream("src/main/resources/"+filename, true));
+            writer = new PrintWriter(new FileOutputStream("src/main/resources/" + filename, true));
 
             writer.println(data);
         }
-        catch(FileNotFoundException ex)
+        catch (FileNotFoundException ex)
         {
-            System.out.println("Error reading/writing from file: "+ ex.getMessage());
+            System.out.println("Error reading/writing from file: " + ex.getMessage());
         }
         finally
         {
             writer.close();
         }
     }
+
 }

@@ -18,15 +18,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import models.TrailsModel;
 
 /**
  * Defualt landing ui for app
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
- *
  **/
+
 public class HomeUI
 {
     private static final int MAX_WIDTH = 300;
@@ -51,7 +50,7 @@ public class HomeUI
         String[] buttonLabels = {"Trails", "Checklist", "Reminders"};
         Button[] menuButtons = new Button[buttonLabels.length];
 
-        for(int i = 0; i<3; i++)
+        for (int i = 0; i < 3; i++)
         {
             menuButtons[i] = new Button(buttonLabels[i]);
             menuButtons[i].setMaxWidth(MAX_WIDTH);
@@ -77,8 +76,7 @@ public class HomeUI
                     if (label.equals("Trails"))
                     {
                         stage.setScene(TrailsUI.trails(stage));
-                    }
-                    else if(label.equals("Checklist"))
+                    } else if (label.equals("Checklist"))
                     {
                         stage.setScene((ChecklistUI.checklist(stage)));
                     }

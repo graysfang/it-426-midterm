@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trails>
+    <trail id="Interurban">
+        <steps>12, 12, 12, 45, 90</steps>
+        <heartRate/>
+    </trail>
+    <trail id="Squak Mt.">
+        <steps>123, 456, 123, 100</steps>
+        <heartRate/>
+    </trail>
+</trails>
