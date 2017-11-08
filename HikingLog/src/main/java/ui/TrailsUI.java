@@ -6,21 +6,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.TrailModel;
 import models.TrailsModel;
+import models.UtilitiesIO;
 
 public class TrailsUI {
 
-    final private static int ROW_HEIGHT = 24;
+    final private static int ROW_HEIGHT = 28;
     private static final int LIST_ROW_PADDING = 2;
     private static TrailsModel trailsModel = new TrailsModel();
-    private static TrailModel trailModel = new TrailModel();
     private static ObservableList trailNames = FXCollections.observableArrayList();
 
     public static Scene trails(Stage stage)
@@ -30,36 +32,47 @@ public class TrailsUI {
 
         populateTrailNames();
 
-        ListView trails = new ListView(trailNames);
-        listPrefHeight(trails);
-        trails.setMaxWidth(250);
-        HBox addRemoveButtons = new HBox();
-        addRemoveButtons.setSpacing(5);
         HBox addTrailBox = new HBox();
+        addTrailBox.setSpacing(10);
+        addTrailBox.setPadding(new Insets(0,0,10,0));
+        addTrailBox.getStyleClass().add("trails");
 
         Label addTrailLabel = new Label("Add Trail: ");
         TextField addTrailField = new TextField();
         Button addTrail = new Button("Add Trail");
-        addTrailBox.getChildren().addAll(addTrailLabel, addTrailField, addTrail);
+        addTrailBox.getChildren().addAll(addTrailLabel, addTrailField);
+
+        HBox addRemoveButtons = new HBox();
+        addRemoveButtons.setSpacing(5);
+
+        VBox trailsList = new VBox();
+        trailsList.setPadding(new Insets(10, 0, 0, 0));
+
+        ListView trails = new ListView(trailNames);
+//        trails.getStyleClass().add("listView");
+        listPrefHeight(trails);
+        trails.setMaxWidth(225);
+        trailsList.getChildren().add(trails);
+
 
         Button removeTrail = new Button("Remove Trail");
-
         addRemoveButtons.getChildren().addAll(addTrail, removeTrail, TempleteUI.homeBar(stage));
 
-        gridPane.add(addTrailBox, 0, 1);
+        gridPane.add(addTrailBox, 0, 1, 3, 1);
         gridPane.add(addRemoveButtons, 0, 3, 3, 1);
-        gridPane.add(trails, 0, 5, 3, 1);
+        gridPane.add(trailsList, 0, 5, 3, 1);
 
         trails.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent click)
             {
-                if (click.getClickCount() == 2)
+                String selection = String.valueOf(trails.getSelectionModel().getSelectedItem()).trim();
+                if (click.getClickCount() == 2 && !selection.equals("null"))
                 {
                     //Use ListView's getSelected Item
-                    trailModel.setSelectedTrail(String.valueOf(trails.getSelectionModel().getSelectedItem()));
+                    trailsModel.setSelectedTrail(selection);
                     //use this to do whatever you want to. Open Link etc.
-                    stage.setScene(TrailUI.trail(stage, trailModel));
+                    stage.setScene(TrailUI.trail(stage, trailsModel));
                 }
             }
         });
