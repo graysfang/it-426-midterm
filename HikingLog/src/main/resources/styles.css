@@ -36,6 +36,11 @@ BorderPane, GridPane Label{
     
 }
 
-.list-cell:empty {
-    visibility: hidden;
+.trails{
+    -fx-font-size: 1.5em;
 }
+
+.list-cell{
+    -fx-font-size: 1.25em;
+}
+
