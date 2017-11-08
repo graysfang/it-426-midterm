@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.TrailModel;
 import models.TrailsModel;
@@ -32,21 +33,23 @@ public class TrailsUI {
 
         ListView trails = new ListView(trailNames);
         listPrefHeight(trails);
-        trails.setMaxWidth(250);
         HBox addRemoveButtons = new HBox();
-        addRemoveButtons.setSpacing(5);
+        addRemoveButtons.setSpacing(48);
         HBox addTrailBox = new HBox();
 
         Label addTrailLabel = new Label("Add Trail: ");
         TextField addTrailField = new TextField();
         Button addTrail = new Button("Add Trail");
-        addTrailBox.getChildren().addAll(addTrailLabel, addTrailField, addTrail);
+        addTrailField.setMaxWidth(300);
+        addTrailBox.getChildren().addAll(addTrailLabel, addTrailField);
+
+        addTrailBox.setMaxWidth(300);
 
         Button removeTrail = new Button("Remove Trail");
 
         addRemoveButtons.getChildren().addAll(addTrail, removeTrail, TempleteUI.homeBar(stage));
 
-        gridPane.add(addTrailBox, 0, 1);
+        gridPane.add(addTrailBox, 0, 0, 4,1);
         gridPane.add(addRemoveButtons, 0, 3, 3, 1);
         gridPane.add(trails, 0, 5, 3, 1);
 
@@ -79,7 +82,7 @@ public class TrailsUI {
             listPrefHeight(trails);
         });
 
-        return new Scene(gridPane, 350, 650);
+        return new Scene(gridPane, 350, 500);
     }
 
     private static void listPrefHeight(ListView list)
