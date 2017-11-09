@@ -50,7 +50,7 @@ public class ChecklistModel
         {
             if(item.toLowerCase().equals(removeItem.toLowerCase()))
             {
-                checklist.remove(removeItem);
+                checklist.remove(item);
                 break;
             }
         }

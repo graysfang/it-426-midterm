@@ -5,7 +5,7 @@ package ui;
  * 10/30/2017
  * HomeUI.java
  *
- * DESCRIPTION
+ * Defualt landing ui for app
  */
 
 import javafx.event.ActionEvent;
@@ -20,15 +20,21 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * DESCRIPTION
+ * Defualt landing ui for app
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
  **/
 
-public class HomeUI {
+public class HomeUI
+{
     private static final int MAX_WIDTH = 300;
 
+    /**
+     * Constructs the home screen
+     * @param stage current stage
+     * @return built stage
+     */
     public static Scene assemble(Stage stage)
     {
 

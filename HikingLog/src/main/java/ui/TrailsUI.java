@@ -4,6 +4,7 @@ package ui;/**
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -37,6 +38,7 @@ public class TrailsUI {
         Label addTrailLabel = new Label("Add Trail: ");
         TextField addTrailField = new TextField();
         Button addTrail = new Button("Add Trail");
+
         addTrailBox.getChildren().addAll(addTrailLabel, addTrailField);
 
         HBox addRemoveButtons = new HBox();
