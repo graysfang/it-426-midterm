@@ -79,6 +79,9 @@ public class HomeUI
                     } else if (label.equals("Checklist"))
                     {
                         stage.setScene((ChecklistUI.checklist(stage)));
+                    } else if (label.equals("Reminders"))
+                    {
+                        stage.setScene(RemindersUI.reminders(stage));
                     }
                 }
             });

@@ -30,7 +30,7 @@ import models.TrailsModel;
 public class TrailsUI {
 
     final private static int ROW_HEIGHT = 28;
-    private static final int LIST_ROW_PADDING = 2;
+    final private static int LIST_ROW_PADDING = 2;
     private static TrailsModel trailsModel = new TrailsModel();
     private static ObservableList trailNames = FXCollections.observableArrayList();
 

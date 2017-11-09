@@ -39,10 +39,10 @@ public class TrailUI {
     private static final String STEPS_START = "Steps: ";
     private static String stepHistory;
     private static String heartRatesHistory;
-    private static Label avgSteps;
-    private static Label avgHeartRate;
-    private static String stepAverage;
-    private static String heartRateAverage;
+    private static Label avgSteps = new Label();
+    private static Label avgHeartRate = new Label();
+    private static String stepAverage = "";
+    private static String heartRateAverage = "";
 
     /**
      * The trail scene
@@ -90,10 +90,7 @@ public class TrailUI {
         HBox averages = new HBox();
         averages.setSpacing(10);
         averages.setPadding(new Insets(10));
-        avgSteps = new Label( );
-        avgHeartRate = new Label( );
-
-
+        averages.getChildren().addAll(avgSteps, avgHeartRate);
 
         HBox stepsHistory = new HBox();
         Text steps = new Text(stepHistory);
@@ -112,6 +109,7 @@ public class TrailUI {
         gridPane.add(title, 0, 1, 2, 1);
         gridPane.add(back, 2, 1, 1, 1);
         gridPane.add(healthDetailFields, 0, 2, 3, 1);
+        gridPane.add(averages, 0, 3, 3, 1);
         gridPane.add(stepsHistory, 0, 4, 4, 2);
         gridPane.add(heartRateHistory, 0, 6, 4, 2);
 
@@ -152,6 +150,7 @@ public class TrailUI {
                     heartRateField.clear();
                     steps.setText(stepHistory);
                     heartRates.setText(heartRatesHistory);
+
                 }
             }
         });
@@ -171,9 +170,13 @@ public class TrailUI {
     //loads the averages
     private static void loadAverages(TrailsModel trailsModel)
     {
+        heartRateAverage = "";
+        stepAverage = "";
         heartRateAverage = "Heart Rate Average: " +
                 trailsModel.getAverage(trailsModel.getCountHistory(HEARTRATE_TAG_NAME));
         stepAverage = "Step Average: " + trailsModel.getAverage(trailsModel.getCountHistory(STEPS_TAG_NAME));
+        avgHeartRate.setText(heartRateAverage);
+        avgSteps.setText(stepAverage);
     }
 
     //loads all the counts
