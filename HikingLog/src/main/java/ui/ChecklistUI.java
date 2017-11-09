@@ -31,8 +31,6 @@ import java.util.ArrayList;
 public class ChecklistUI
 {
     private static ChecklistModel checklistModel = new ChecklistModel();
-
-
     /**
      * The main checklist view
      * @param stage current stage
