@@ -31,7 +31,7 @@ public class TrailsModel {
 
     private static final String TRAIL_TAG_NAME = "trail";
     private static final String FILE_PATH = "src/main/resources/trails.xml";
-    private static final String DELIMS = "\\\\s*(=>|,|\\\\s)\\\\s*";
+    private static final String DELIMS = "[ .,?!]+";
 
     private HashMap<String, Integer> trailAndIndex;
     private ArrayList<String> trails;
@@ -286,7 +286,8 @@ public class TrailsModel {
             {
                 total += Integer.valueOf(aCountHistory);
             }
-            return String.valueOf(total / countHistory.length);
+            double average = total / countHistory.length;
+            return String.valueOf(average);
         } else
         {
             return "";
