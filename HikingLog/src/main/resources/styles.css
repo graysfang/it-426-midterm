@@ -30,13 +30,18 @@ BorderPane, GridPane Label{
     -fx-background-color: #196A31;
 }
 
-.checklist CheckBox{
+.checklist CheckBox {
     -fx-text-fill: #F2F2F2;
     -fx-font-size: 2em;
     
 }
-
 .trails{
+    -fx-font-size: 1.5em;
+}
+.trailUI
+{
+    -fx-text-fill: #F2F2F2;
+
     -fx-font-size: 1.5em;
 }
 

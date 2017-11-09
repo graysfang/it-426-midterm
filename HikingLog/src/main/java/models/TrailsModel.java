@@ -31,12 +31,12 @@ public class TrailsModel {
 
     private static final String TRAIL_TAG_NAME = "trail";
     private static final String FILE_PATH = "src/main/resources/trails.xml";
-    private static final String DELIMS = "[ ,]";
+    private static final String DELIMS = "\\\\s*(=>|,|\\\\s)\\\\s*";
 
     private HashMap<String, Integer> trailAndIndex;
     private ArrayList<String> trails;
     private String trailName;
-    private String stepCountHistory;
+    private String countHistory;
     private Integer trailIndex;
 
 
@@ -168,13 +168,13 @@ public class TrailsModel {
         return trailName;
     }
 
-    public void addHeartRate(int heartRate)
-    {
 
-    }
-
-    public void addStepCount(String steps)
+    public void addCount(String nodeName, String count)
     {
+        if (count.isEmpty())
+        {
+            return;
+        }
         try
         {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -191,9 +191,17 @@ public class TrailsModel {
             {
                 Node child = trailChildren.item(i);
 
-                if ("steps".equals(child.getNodeName()))
+                if (nodeName.equals(child.getNodeName()))
                 {
-                    child.setTextContent(steps);
+                    String existingCount = child.getTextContent();
+
+                    if (existingCount.isEmpty())
+                    {
+                        child.setTextContent(count);
+                    } else
+                    {
+                        child.setTextContent(existingCount + ", " + count);
+                    }
                 }
             }
 
@@ -218,7 +226,7 @@ public class TrailsModel {
         }
     }
 
-    public String getStepCountHistory()
+    public String getCountHistory(String nodeName)
     {
         try
         {
@@ -234,12 +242,11 @@ public class TrailsModel {
             {
                 Node child = trailChildren.item(i);
 
-                if ("steps".equals(child.getNodeName()))
+                if (nodeName.equals(child.getNodeName()))
                 {
-                    stepCountHistory = child.getTextContent();
+                    countHistory = child.getTextContent();
                 }
             }
-
         }
         catch (ParserConfigurationException | IOException pce)
         {
@@ -252,36 +259,40 @@ public class TrailsModel {
         }
         finally
         {
-            if (!stepCountHistory.isEmpty())
-            {
-                return stepCountHistory;
-            }else {
-                String tempMessage = "Error, Please try again";
-                return tempMessage;
-            }
+            return countHistory;
         }
     }
+
 
     public void clearSelectedTrailInformation()
     {
         trailName = "";
         trailIndex = null;
-        stepCountHistory = "";
+        countHistory = "";
     }
 
-    private int[] parseStringtoInt(String count)
+    public String getAverage(String count)
     {
-        String[] tokens = count.split(DELIMS);
-        int[] countHistory = new int[tokens.length];
+        String[] countHistory = count.split(DELIMS);
 
-        for (int i = 0; i < tokens.length; i++)
+        if (countHistory.length == 1)
         {
-            countHistory[i] = Integer.valueOf(tokens[i]);
-            ;
-        }
+            return countHistory[0];
+        } else if (countHistory.length > 1)
+        {
+            int total = 0;
 
-        return countHistory;
+            for (String aCountHistory : countHistory)
+            {
+                total += Integer.valueOf(aCountHistory);
+            }
+            return String.valueOf(total / countHistory.length);
+        } else
+        {
+            return "";
+        }
     }
+
 
     private void readInTrails()
     {

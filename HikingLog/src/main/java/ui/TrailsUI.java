@@ -14,9 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import models.TrailModel;
 import models.TrailsModel;
-import models.UtilitiesIO;
 
 public class TrailsUI {
 
@@ -32,7 +30,6 @@ public class TrailsUI {
 
         populateTrailNames();
 
-
         HBox addTrailBox = new HBox();
         addTrailBox.setSpacing(10);
         addTrailBox.setPadding(new Insets(0,0,10,0));
@@ -44,7 +41,6 @@ public class TrailsUI {
 
         addTrailBox.getChildren().addAll(addTrailLabel, addTrailField);
 
-
         HBox addRemoveButtons = new HBox();
         addRemoveButtons.setSpacing(5);
 
@@ -52,7 +48,6 @@ public class TrailsUI {
         trailsList.setPadding(new Insets(10, 0, 0, 0));
 
         ListView trails = new ListView(trailNames);
-//      trails.getStyleClass().add("listView");
         listPrefHeight(trails);
         trails.setMaxWidth(225);
         trailsList.getChildren().add(trails);
@@ -61,7 +56,7 @@ public class TrailsUI {
         Button removeTrail = new Button("Remove Trail");
         addRemoveButtons.getChildren().addAll(addTrail, removeTrail, TempleteUI.homeBar(stage));
 
-
+        gridPane.add(addTrailBox, 0, 1, 3, 1);
         gridPane.add(addRemoveButtons, 0, 3, 3, 1);
         gridPane.add(trailsList, 0, 5, 3, 1);
 
