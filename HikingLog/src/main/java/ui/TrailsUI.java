@@ -1,5 +1,10 @@
-package ui;/**
- * Created by Hillary on 11/2/2017.
+package ui;
+/*
+ * Nicholas Perez, Hillary Wagoner, Bo Zhang
+ * 11/2/2017
+ * TrailsUI.java
+ *
+ * This class controls views for the trailsUI.
  */
 
 import javafx.collections.FXCollections;
@@ -16,6 +21,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.TrailsModel;
 
+/**
+ * This class controls views for the trailsUI.
+ *
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
+ * @version 1.0
+ **/
 public class TrailsUI {
 
     final private static int ROW_HEIGHT = 28;
@@ -23,6 +34,11 @@ public class TrailsUI {
     private static TrailsModel trailsModel = new TrailsModel();
     private static ObservableList trailNames = FXCollections.observableArrayList();
 
+    /**
+     * The trails scene
+     * @param stage the current stage
+     * @return the set scene
+     */
     public static Scene trails(Stage stage)
     {
         GridPane gridPane = TempleteUI.generateGridPane();
@@ -93,11 +109,13 @@ public class TrailsUI {
         return new Scene(gridPane, 350, 500);
     }
 
+    //sets a pref height
     private static void listPrefHeight(ListView list)
     {
         list.setPrefHeight(trailNames.size() * ROW_HEIGHT + LIST_ROW_PADDING);
     }
 
+    //populates the trail names
     private static void populateTrailNames()
     {
         trailNames.clear();

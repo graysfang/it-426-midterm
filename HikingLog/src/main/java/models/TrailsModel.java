@@ -4,7 +4,7 @@ package models;
  * 11/1/2017
  * TrailsModel.java
  *
- * DESCRIPTION
+ * Model / Control for TrailsUI
  */
 
 import org.w3c.dom.*;
@@ -18,11 +18,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
- * DESCRIPTION
+ * Model / Control for TrailsUI
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
@@ -40,6 +39,10 @@ public class TrailsModel {
     private Integer trailIndex;
 
 
+    /**
+     * Adds a trail to the XML
+     * @param trailName the trail name to be added
+     */
     public void addTrail(String trailName)
     {
         if (!trailName.trim().equals("") && !doesTrailExist(trailName))
@@ -84,6 +87,7 @@ public class TrailsModel {
         }
     }
 
+    //checks if the trail already exists
     private boolean doesTrailExist(String trailName)
     {
         for (String trail : trails)
@@ -96,6 +100,10 @@ public class TrailsModel {
         return false;
     }
 
+    /**
+     * Gets the trails
+     * @return an arraylist of trails
+     */
     public ArrayList<String> getTrails()
     {
         trails = new ArrayList<>();
@@ -115,6 +123,10 @@ public class TrailsModel {
         return trails;
     }
 
+    /**
+     * Removes a trail
+     * @param trailName trail to be removed
+     */
     public void removeTrail(String trailName)
     {
         trails.remove(trailName);
@@ -152,6 +164,10 @@ public class TrailsModel {
 
     }
 
+    /**
+     * Sets a trail
+     * @param trailName trail to be set
+     */
     public void setSelectedTrail(String trailName)
     {
         this.trailName = trailName;
@@ -163,12 +179,20 @@ public class TrailsModel {
         this.trailIndex = trailIndex;
     }
 
+    /**
+     * gets selected trail
+     * @return the trail that was selected
+     */
     public String getSelectedTrail()
     {
         return trailName;
     }
 
-
+    /**
+     * Adds a step or heart rate
+     * @param nodeName the step or heart rate node in the xml
+     * @param count the amounts being added
+     */
     public void addCount(String nodeName, String count)
     {
         if (count.isEmpty())
@@ -226,6 +250,11 @@ public class TrailsModel {
         }
     }
 
+    /**
+     *  a generic get count for the steps or heart rates
+     * @param nodeName the step or heart rate node in the xml
+     * @return the count
+     */
     public String getCountHistory(String nodeName)
     {
         try
@@ -263,7 +292,9 @@ public class TrailsModel {
         }
     }
 
-
+    /**
+     * clears the selected trail info
+     */
     public void clearSelectedTrailInformation()
     {
         trailName = "";
@@ -271,6 +302,11 @@ public class TrailsModel {
         countHistory = "";
     }
 
+    /**
+     * get the average of step or heart rate
+     * @param count the number to average
+     * @return the average
+     */
     public String getAverage(String count)
     {
         String[] countHistory = count.split(DELIMS);
@@ -294,7 +330,7 @@ public class TrailsModel {
         }
     }
 
-
+    //reads in the trails
     private void readInTrails()
     {
         trailAndIndex = new HashMap<>();
@@ -328,6 +364,7 @@ public class TrailsModel {
         }
     }
 
+    //writes to the xml
     private void writeToXMLFile(Document doc) throws TransformerException
     {
         // write the content into xml file
