@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Model / Control for TrailsUI
+ * Model / Control for TrailsUI and TrailUI
  *
  * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
  * @version 1.0
