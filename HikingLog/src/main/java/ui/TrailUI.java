@@ -1,5 +1,11 @@
 package ui;
-
+/*
+ * Nicholas Perez, Hillary Wagoner, Bo Zhang
+ * 11/4/2017
+ * TrailUI.java
+ *
+ * This class controls views for the trailUI.
+ */
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -19,8 +25,11 @@ import javafx.stage.Stage;
 import models.TrailsModel;
 
 /**
- * Created by Hillary on 11/4/2017.
- */
+ * This class controls views for the trailUI.
+ *
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
+ * @version 1.0
+ **/
 public class TrailUI {
 
     private static final int FIELD_PREF_WIDTH = 90;
@@ -35,7 +44,13 @@ public class TrailUI {
     private static String stepAverage;
     private static String heartRateAverage;
 
-
+    /**
+     * The trail scene
+     *
+     * @param stage the current stage
+     * @param trailsModel model/controller object
+     * @return the set scene
+     */
     public static Scene trail(Stage stage, TrailsModel trailsModel)
     {
 
@@ -152,6 +167,8 @@ public class TrailUI {
 
         return new Scene(gridPane, 350, 500);
     }
+
+    //loads the averages
     private static void loadAverages(TrailsModel trailsModel)
     {
         heartRateAverage = "Heart Rate Average: " +
@@ -159,6 +176,7 @@ public class TrailUI {
         stepAverage = "Step Average: " + trailsModel.getAverage(trailsModel.getCountHistory(STEPS_TAG_NAME));
     }
 
+    //loads all the counts
     private static void loadCountHistories(TrailsModel trailsModel)
     {
 
