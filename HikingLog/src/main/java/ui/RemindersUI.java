@@ -16,7 +16,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.RemindersModel;
 
-
+/**
+ * The view for Reminders
+ *
+ * @author Nicholas Perez, Hillary Wagoner, Bo Zhang
+ * @version 1.0
+ */
 public class RemindersUI {
 
     final private static int ROW_HEIGHT = 28;
@@ -24,6 +29,13 @@ public class RemindersUI {
     private static RemindersModel remindersModel = new RemindersModel();
     private static ObservableList messages = FXCollections.observableArrayList();
 
+    /**
+     * assembles the reminders scene
+     *
+     * @param stage the stage which to set the scene
+     *
+     * @return a new scene with specified dimensions
+     */
     public static Scene reminders(Stage stage)
     {
         GridPane gridPane = TempleteUI.generateGridPane();
