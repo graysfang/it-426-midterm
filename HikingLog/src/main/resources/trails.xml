@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <trails>
     <trail id="Interurban">
-        <steps>12, 12, 12, 45, 90</steps>
+        <steps>12, 5, 60</steps>
         <heartRate/>
     </trail>
     <trail id="Squak Mt.">
-        <steps>123, 456, 123, 100</steps>
+        <steps/>
         <heartRate/>
     </trail>
+<trail id="Snoqualmie">
+<steps>0987, 123, 1234, 12345, 987, 123</steps>
+<heartrate>123, 1234, 12345, 098, 12, 555</heartrate>
+</trail>
 </trails>

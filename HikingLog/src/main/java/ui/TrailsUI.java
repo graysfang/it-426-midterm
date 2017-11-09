@@ -4,7 +4,6 @@ package ui;/**
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,9 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import models.TrailModel;
 import models.TrailsModel;
-import models.UtilitiesIO;
 
 public class TrailsUI {
 
@@ -49,7 +46,6 @@ public class TrailsUI {
         trailsList.setPadding(new Insets(10, 0, 0, 0));
 
         ListView trails = new ListView(trailNames);
-//        trails.getStyleClass().add("listView");
         listPrefHeight(trails);
         trails.setMaxWidth(225);
         trailsList.getChildren().add(trails);
@@ -92,7 +88,7 @@ public class TrailsUI {
             listPrefHeight(trails);
         });
 
-        return new Scene(gridPane, 350, 650);
+        return new Scene(gridPane, 350, 500);
     }
 
     private static void listPrefHeight(ListView list)
